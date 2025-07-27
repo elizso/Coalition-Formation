@@ -1,0 +1,196 @@
+Stable descendant(s) of (3) is/are:
+3 
+Stable descendant(s) of (4) is/are:
+4 
+Stable descendant(s) of (5) is/are:
+2 2 1 
+Stable descendant(s) of (6) is/are:
+3 2 1 
+Stable descendant(s) of (7) is/are:
+3 3 1 
+Stable descendant(s) of (8) is/are:
+8 
+Stable descendant(s) of (9) is/are:
+9 
+Stable descendant(s) of (10) is/are:
+10 
+Stable descendant(s) of (11) is/are:
+11 
+Stable descendant(s) of (12) is/are:
+5 5 2 
+Stable descendant(s) of (13) is/are:
+13 
+Stable descendant(s) of (14) is/are:
+6 6 2 
+Stable descendant(s) of (15) is/are:
+7 7 1 
+Stable descendant(s) of (16) is/are:
+9 6 1 
+Stable descendant(s) of (17) is/are:
+9 7 1 
+Stable descendant(s) of (18) is/are:
+10 7 1 
+Stable descendant(s) of (19) is/are:
+5 5 5 3 1 
+Stable descendant(s) of (20) is/are:
+11 8 1 
+Stable descendant(s) of (21) is/are:
+6 6 6 2 1 
+Stable descendant(s) of (22) is/are:
+7 7 6 1 1 
+Stable descendant(s) of (23) is/are:
+7 7 7 1 1 
+Stable descendant(s) of (24) is/are:
+8 8 6 1 1 
+Stable descendant(s) of (25) is/are:
+5 5 5 5 3 1 1 
+Stable descendant(s) of (26) is/are:
+7 7 7 3 1 1 
+Stable descendant(s) of (27) is/are:
+7 7 7 4 1 1 
+Stable descendant(s) of (28) is/are:
+6 6 6 6 2 1 1 
+Stable descendant(s) of (29) is/are:
+5 5 5 5 5 2 1 1 
+Stable descendant(s) of (30) is/are:
+6 6 6 6 4 1 1 
+Stable descendant(s) of (31) is/are:
+7 7 7 7 1 1 1 
+Stable descendant(s) of (32) is/are:
+5 5 5 5 5 4 1 1 1 
+Stable descendant(s) of (33) is/are:
+7 7 7 7 2 1 1 1 
+Stable descendant(s) of (34) is/are:
+7 7 7 7 3 1 1 1 
+Stable descendant(s) of (35) is/are:
+6 6 6 6 6 2 1 1 1 
+Stable descendant(s) of (36) is/are:
+8 8 8 8 1 1 1 1 
+Stable descendant(s) of (37) is/are:
+8 8 8 8 2 1 1 1 
+Stable descendant(s) of (38) is/are:
+5 5 5 5 5 5 4 1 1 1 1 
+Stable descendant(s) of (39) is/are:
+9 9 9 8 1 1 1 1 
+Stable descendant(s) of (40) is/are:
+6 6 6 6 6 6 1 1 1 1 
+Stable descendant(s) of (41) is/are:
+8 8 8 8 5 1 1 1 1 
+Stable descendant(s) of (42) is/are:
+6 6 6 6 6 6 2 1 1 1 1 
+Stable descendant(s) of (43) is/are:
+6 6 6 6 6 6 3 1 1 1 1 
+Stable descendant(s) of (44) is/are:
+9 9 9 8 5 1 1 1 1 
+Stable descendant(s) of (45) is/are:
+6 6 6 6 6 6 4 1 1 1 1 1 
+Stable descendant(s) of (46) is/are:
+6 6 6 6 6 6 5 1 1 1 1 1 
+Stable descendant(s) of (47) is/are:
+7 7 7 7 7 7 1 1 1 1 1 
+Stable descendant(s) of (48) is/are:
+48 
+Stable descendant(s) of (49) is/are:
+49 
+Stable descendant(s) of (50) is/are:
+28 22 
+Stable descendant(s) of (51) is/are:
+51 
+Stable descendant(s) of (52) is/are:
+52 
+Stable descendant(s) of (53) is/are:
+53 
+Stable descendant(s) of (54) is/are:
+10 10 10 9 9 1 1 1 1 1 1 
+Stable descendant(s) of (55) is/are:
+32 23 
+Stable descendant(s) of (56) is/are:
+56 
+Stable descendant(s) of (57) is/are:
+25 20 12 
+Stable descendant(s) of (58) is/are:
+36 22 
+Stable descendant(s) of (59) is/are:
+36 23 
+Stable descendant(s) of (60) is/are:
+60 
+Stable descendant(s) of (61) is/are:
+34 27 
+Stable descendant(s) of (62) is/are:
+39 23 
+Stable descendant(s) of (63) is/are:
+37 26 
+Stable descendant(s) of (64) is/are:
+38 26 
+Stable descendant(s) of (65) is/are:
+39 26 
+Stable descendant(s) of (66) is/are:
+21 21 16 8 
+Stable descendant(s) of (67) is/are:
+27 27 13 
+Stable descendant(s) of (68) is/are:
+27 27 14 
+Stable descendant(s) of (69) is/are:
+36 24 9 
+Stable descendant(s) of (70) is/are:
+30 30 10 
+Stable descendant(s) of (71) is/are:
+30 30 11 
+Stable descendant(s) of (72) is/are:
+25 18 18 11 
+Stable descendant(s) of (73) is/are:
+33 33 7 
+Stable descendant(s) of (74) is/are:
+74 
+Stable descendant(s) of (75) is/are:
+75 
+Stable descendant(s) of (76) is/are:
+36 35 5 
+Stable descendant(s) of (77) is/are:
+43 31 3 
+Stable descendant(s) of (78) is/are:
+43 31 4 
+Stable descendant(s) of (79) is/are:
+39 39 1 
+Stable descendant(s) of (80) is/are:
+31 22 22 5 
+Stable descendant(s) of (81) is/are:
+31 24 19 7 
+Stable descendant(s) of (82) is/are:
+39 33 10 
+Stable descendant(s) of (83) is/are:
+23 23 22 12 3 
+Stable descendant(s) of (84) is/are:
+42 35 7 
+Stable descendant(s) of (85) is/are:
+42 35 8 
+Stable descendant(s) of (86) is/are:
+25 24 20 15 2 
+Stable descendant(s) of (87) is/are:
+45 39 3 
+Stable descendant(s) of (88) is/are:
+45 39 4 
+Stable descendant(s) of (89) is/are:
+26 26 20 16 1 
+Stable descendant(s) of (90) is/are:
+49 40 1 
+Stable descendant(s) of (91) is/are:
+28 28 23 11 1 
+Stable descendant(s) of (92) is/are:
+28 28 23 12 1 
+Stable descendant(s) of (93) is/are:
+52 40 1 
+Stable descendant(s) of (94) is/are:
+30 30 26 4 4 
+Stable descendant(s) of (95) is/are:
+95 
+Stable descendant(s) of (96) is/are:
+56 38 2 
+Stable descendant(s) of (97) is/are:
+18 18 18 18 12 10 3 
+Stable descendant(s) of (98) is/are:
+58 39 1 
+Stable descendant(s) of (99) is/are:
+59 39 1 
+Stable descendant(s) of (100) is/are:
+34 26 26 13 1 

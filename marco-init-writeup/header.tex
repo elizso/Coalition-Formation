@@ -1,0 +1,284 @@
+\usepackage{amsmath,amsthm,amsfonts,amssymb,color,hyperref,anysize,enumitem,graphicx,epstopdf,algorithm,algpseudocode,cleveref,multirow,textcomp,tabularx}
+%\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[margin=0.8in]{geometry}
+
+\newcommand{\rr}{\mathbb{R}}
+\newcommand{\rrplus}{\rr^+}
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\zz}{\mathbb{Z}}
+\newcommand{\qq}{\mathbb{Q}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\Ot}{\tilde{\O}}
+\newcommand{\ep}{\epsilon}
+
+\newcommand{\la}{\leftarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\renewcommand{\angle}[1]{\left\langle #1 \right\rangle}
+
+\newcommand{\prob}[1]{\mathbb{P}\left[ #1 \right]}
+\newcommand{\probsub}[2]{\mathbb{P}_{#1}\left[ #2 \right]}
+\newcommand{\expect}[1]{\mathbb{E}\left[ #1 \right]}
+\newcommand{\expectsub}[2]{\mathbb{E}_{#1}\left[ #2 \right]}
+
+\renewcommand{\bold}[1]{\textbf{#1}}
+\newcommand{\parabold}[1]{\noindent\bold{#1}}
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\blue}[1]{{\color{blue} #1}}
+\newcommand{\green}[1]{{\color{green} #1}}
+\newcommand{\yellow}[1]{{\color{orange} #1}}
+
+\newcommand{\comm}[1]{~~~~~~\text{(#1)}}
+
+\newcommand{\NP}{\textsf{NP}}
+\newcommand{\PLS}{\textsf{PLS}}
+\newcommand{\PPAD}{\textsf{PPAD}}
+\newcommand{\poly}{\textsf{poly}}
+\newcommand{\mpoly}{\mathsf{poly}}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\support}{supp}
+\DeclareMathOperator*{\diameter}{diam}
+\newcommand{\sfd}{\mathsf{d}}
+\newcommand{\diff}[2]{\frac{\sfd #1}{\sfd #2}}
+\newcommand{\difft}[1]{\frac{\sfd #1}{\sfd t}}
+\newcommand{\partdiff}[2]{\frac{\partial #1}{\partial #2}}
+
+\newenvironment{pf}{\begin{proof}[\emph{\textbf{Proof: }}]}{\end{proof}}
+\newenvironment{pfsketch}{\begin{proof}[\emph{\textbf{Proof Sketch: }}]}{\end{proof}}
+%\newenvironment{infpf}{\begin{proof}[\emph{\textbf{Informal Proof: }}]}{\end{proof}}
+\newenvironment{pfof}[1]{\begin{proof}[\emph{\textbf{Proof of #1: }}]}{\end{proof}}
+
+\newcommand{\hide}[1]{}
+
+\usepackage{framed,fvextra}
+
+\newcommand{\boxdef}[1]{
+\begin{framed}
+\setlength{\topsep}{1pt}
+\begin{definition}
+\normalfont #1
+\end{definition}
+\end{framed}
+}
+
+\newcommand{\boxthm}[1]{
+\begin{framed}
+\setlength{\topsep}{1pt}
+\begin{theorem}
+\normalfont #1
+\end{theorem}
+\end{framed}
+}
+
+\newcommand{\boxexercise}[1]{
+\begin{framed}
+\setlength{\topsep}{1pt}
+\begin{exercise}
+\normalfont #1
+\end{exercise}
+\end{framed}
+}
+
+\newcommand{\boxexample}[1]{
+\begin{framed}
+\setlength{\topsep}{1pt}
+\begin{example}
+\normalfont #1
+\end{example}
+\end{framed}
+}
+
+\newcommand{\boxlem}[1]{
+\begin{framed}
+\setlength{\topsep}{1pt}
+\begin{lemma}
+\normalfont #1
+\end{lemma}
+\end{framed}
+}
+
+\newcommand{\boxcoro}[1]{
+\begin{framed}
+\setlength{\topsep}{1pt}
+\begin{corollary}
+\normalfont #1
+\end{corollary}
+\end{framed}
+}
+
+\newcommand{\boxprop}[1]{
+\begin{framed}
+\setlength{\topsep}{1pt}
+\begin{prop}
+\normalfont #1
+\end{prop}
+\end{framed}
+}
+
+\newcommand{\boxassume}[1]{
+\begin{framed}
+\setlength{\topsep}{1pt}
+\begin{assume}
+\normalfont #1
+\end{assume}
+\end{framed}
+}
+
+\newcommand{\rubric}[2]{
+\begin{framed}
+\setlength{\topsep}{1pt}
+{\Large\textbf{Lecture #1: #2}}
+\begin{flushright}
+AMSI Summer School 2024\\
+Algorithmic Game Theory and Economics\\
+Dr.~Yun Kuen (Marco) Cheung
+\end{flushright}
+\end{framed}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{assume}[theorem]{Assumption}
+
+\newenvironment{rlemma}[2][Lemma]{%
+%\italicenvfalse
+\medskip
+\noindent\textbf{#1 \ref{#2}.} \begin{itshape}}{\end{itshape} %\italicenvtrue
+}
+
+\newenvironment{rtheorem}[2][Theorem]{%
+%\italicenvfalse
+\medskip
+\noindent\textbf{#1 \ref{#2}.} \begin{itshape}}{\end{itshape} %\italicenvtrue
+}
+
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calQ}{\mathcal{Q}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calW}{\mathcal{W}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calZ}{\mathcal{Z}}
+
+\newcommand{\veca}{\vec{a}}
+\newcommand{\vecb}{\vec{b}}
+\newcommand{\vecc}{\vec{c}}
+\newcommand{\vecd}{\vec{d}}
+\newcommand{\vece}{\vec{e}}
+\newcommand{\vecf}{\vec{f}}
+\newcommand{\vecg}{\vec{g}}
+\newcommand{\vech}{\vec{h}}
+\newcommand{\veci}{\vec{i}}
+\newcommand{\vecj}{\vec{j}}
+\newcommand{\veck}{\vec{k}}
+\newcommand{\vecl}{\vec{l}}
+\newcommand{\vecm}{\vec{m}}
+\newcommand{\vecn}{\vec{n}}
+\newcommand{\veco}{\vec{o}}
+\newcommand{\vecp}{\vec{p}}
+\newcommand{\vecq}{\vec{q}}
+\newcommand{\vecr}{\vec{r}}
+\newcommand{\vecs}{\vec{s}}
+\newcommand{\vect}{\vec{t}}
+\newcommand{\vecu}{\vec{u}}
+\newcommand{\vecv}{\vec{v}}
+\newcommand{\vecw}{\vec{w}}
+\newcommand{\vecx}{\vec{x}}
+\newcommand{\vecy}{\vec{y}}
+\newcommand{\vecz}{\vec{z}}
+
+\newcommand{\bba}{\mathbf{a}}
+\newcommand{\bbb}{\mathbf{b}}
+\newcommand{\bbc}{\mathbf{c}}
+\newcommand{\bbd}{\mathbf{d}}
+\newcommand{\bbe}{\mathbf{e}}
+\newcommand{\bbf}{\mathbf{f}}
+\newcommand{\bbg}{\mathbf{g}}
+\newcommand{\bbh}{\mathbf{h}}
+\newcommand{\bbi}{\mathbf{i}}
+\newcommand{\bbj}{\mathbf{j}}
+\newcommand{\bbk}{\mathbf{k}}
+\newcommand{\bbl}{\mathbf{l}}
+\newcommand{\bbm}{\mathbf{m}}
+\newcommand{\bbn}{\mathbf{n}}
+\newcommand{\bbo}{\mathbf{o}}
+\newcommand{\bbp}{\mathbf{p}}
+\newcommand{\bbq}{\mathbf{q}}
+\newcommand{\bbr}{\mathbf{r}}
+\newcommand{\bbs}{\mathbf{s}}
+\newcommand{\bbt}{\mathbf{t}}
+\newcommand{\bbu}{\mathbf{u}}
+\newcommand{\bbv}{\mathbf{v}}
+\newcommand{\bbw}{\mathbf{w}}
+\newcommand{\bbx}{\mathbf{x}}
+\newcommand{\bby}{\mathbf{y}}
+\newcommand{\bbz}{\mathbf{z}}
+
+\newcommand{\bbA}{\mathbf{A}}
+\newcommand{\bbB}{\mathbf{B}}
+\newcommand{\bbC}{\mathbf{C}}
+\newcommand{\bbD}{\mathbf{D}}
+\newcommand{\bbE}{\mathbf{E}}
+\newcommand{\bbF}{\mathbf{F}}
+\newcommand{\bbG}{\mathbf{G}}
+\newcommand{\bbH}{\mathbf{H}}
+\newcommand{\bbI}{\mathbf{I}}
+\newcommand{\bbJ}{\mathbf{J}}
+\newcommand{\bbK}{\mathbf{K}}
+\newcommand{\bbL}{\mathbf{L}}
+\newcommand{\bbM}{\mathbf{M}}
+\newcommand{\bbN}{\mathbf{N}}
+\newcommand{\bbO}{\mathbf{O}}
+\newcommand{\bbP}{\mathbf{P}}
+\newcommand{\bbQ}{\mathbf{Q}}
+\newcommand{\bbR}{\mathbf{R}}
+\newcommand{\bbS}{\mathbf{S}}
+\newcommand{\bbT}{\mathbf{T}}
+\newcommand{\bbU}{\mathbf{U}}
+\newcommand{\bbV}{\mathbf{V}}
+\newcommand{\bbW}{\mathbf{W}}
+\newcommand{\bbX}{\mathbf{X}}
+\newcommand{\bbY}{\mathbf{Y}}
+\newcommand{\bbZ}{\mathbf{Z}}
+\newcommand{\bbone}{\mathbf{1}}
+\newcommand{\bbzero}{\mathbf{0}}
+
+\newcommand{\vup}{\vspace*{-0.02in}}
+\newcommand{\vupp}{\vspace*{-0.04in}}
+\newcommand{\vuppp}{\vspace*{-0.06in}}
+
+\newcommand{\inner}[2]{\left\langle ~#1 ~,~ #2~\right\rangle}
+\newcommand{\trans}{^{\mathsf{T}}}
+
+\setlength{\parindent}{0.2in}
+\setlength{\parskip}{0.05in}
