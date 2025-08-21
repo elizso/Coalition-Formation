@@ -16,7 +16,7 @@
 %%% https://cyprusconferences.org/aamas2026/submission-instructions/
 
 %%%% For anonymized submission, use this
-\documentclass[sigconf,anonymous]{aamas} 
+\documentclass[sigconf]{aamas} 
 
 %%%% For camera-ready, use this
 %\documentclass[sigconf]{aamas} 
@@ -55,19 +55,19 @@ on Autonomous Agents and Multiagent Systems (AAMAS 2026)}{May 25 -- 29, 2026}
 
 %%% Provide names, affiliations, and email addresses for all authors.
 
-\author{Arthur Pendragon}
+\author{Eliz B. So}
 \affiliation{
-  \institution{Camelot Castle}
-  \city{Camelot}
-  \country{United Kingdom}}
-\email{king.arthur@camelot.uk}
+  \institution{Australian National University}
+  \city{Canberra}
+  \country{Australia }}
+\email{eliz.so@anu.edu.au}
 
-\author{Nimue}
+\author{Yun Keun Cheung (Marco)}
 \affiliation{
-  \institution{The Lady's Lake}
-  \city{Avalon}
-  \country{United Kingdom}}
-\email{lady.of.the.lake@avalon.uk}
+  \institution{Australian National University }
+  \city{Canberra}
+  \country{Australia}}
+\email{yunkeun.cheung@anu.edu.au}
 
 %%% Use this environment to specify a short abstract for your paper.
 
@@ -81,7 +81,7 @@ distributed with the ACM article template for \LaTeX\@.
 %%% Use this command to specify a few keywords describing your work.
 %%% Keywords should be separated by commas.
 
-\keywords{Legends, Myths, Folktales}
+\keywords{Algorithms, Coalition Formation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -158,7 +158,7 @@ To balance the columns on the final page of your paper, use the
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{The Preamble}
+\section{Literature Review}
 
 You will be assigned a submission number when you register the abstract 
 of your paper on \textit{OpenReview}. Include this number in your 
@@ -181,38 +181,79 @@ using the `\verb|\keywords|' command.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{The Body of the Paper}
+\section{Notations}
 
-For help with typesetting the body of your paper in \LaTeX\@, please 
-make use of the familiar resources~\cite{Lam94}. In this section we 
-merely highlight a few specific features. 
 
-\subsection{Mathematical Expressions}
+\subsection{Coalition Structure (CS)}
 
-You can typeset all sorts of in-line mathematical expressions 
-with the usual \verb|$...$| construct, as in 
-$\Diamond\Diamond\varphi \rightarrow \Diamond\varphi$ or 
-$\boldsymbol{R} = (R_1,\ldots,R_n)$.
-For more complex expressions, it may often be preferable to use one of
-the various equation-type environments available in \LaTeX\@, as shown 
-in the following example:
-%
+A coalition structure (CS) is the partition of the players into one or more coalitions. For example, when $n=8$, some examples of CS are $\{\{1, 2, 3\}, \{4, 5\}, \{6, 7, 8\}\}$, $\{\{1, 7\}, \{2\}, \{3, 5, 8\}, \{4, 6\}\}$, and $\{\{1, 2, 3, 4, 5, 6, 7, 8\}\}$. The last CS where all players form one single coalition is called a grand coalition. 
+
+In the symmetric game, all players are treated equally. As a result, two CSs that are equivalent up to a relabeling of players yield the same reward distribution. Also, within a given CS, all players belonging to coalitions of the same size receive the same rewards. For example, consider the two CSs $\{1, 2, 3\}, \{4, 5, 6\}, \{7, 8\}$ and $\{1, 3, 7\}, \{2, 5, 8\}, \{4, 6\}$ which are equivalent up to a relabeling of players. The rewards received by players 1, 2, 3, 4, 5, 6 in the first CS are the same as those received by players
+1, 3, 7, 2, 5, 8 in the second CS.
+
+This model differs from the standard cooperative game model underpinning Shapley and core values. % TODO% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Dynamic Betrayal Model}
+
+In general, coalition formation dynamics can involve both splitting and merging of coalitions, making the analysis complex. We focus on a simpler model in which only splitting is allowed. Initially, all players belong to a single grand coalition, which may undergo a sequence of splits. This process continues until no player has an incentive to leave her current coalition and form a smaller one; we will define incentive formally below. In each coalition of size $i \geq 2$, there is a player who may initiate a betrayal by pulling at most $i$ players (including herself) away from the rest of the coalition.
+
+
+\subsection{Nash Equilibrium}
+
+The definition of Nash Equilbrium is the set of strategies such that no player can unilaterally deviate from their strategy to get a higher payoff, given the strategies of all other players. Formally, we can let $A$ to be the set of players, $S_i$ to be the set of strategies available to players, $S$ as the strategy profiles, $u_i$ as the payoff function of each player $i$. Then $s^*\in S$ is a Nash Equilibrium of a strategic gaame if and only if $\forall i \in A$ and $\forall s_i \in S_i$, 
+
 \begin{eqnarray}
-Z_i & = & \frac{u_i(x_i) - u_i(x_{-i})}{u_i(x_i)}
+u_i(s^*_i, s_{-i}^*) & \geq & u_i(s_i, s_{-i}^*)
+\end{eqnarray} 
+
+In this research, as the players are symmetric and all players have a linear demand function $p = A - bx$ with a constant cost $c$, the Nash Equilibrium can be found as follows: 
+
+\begin{eqnarray}
+	\frac{(A-c)^2}{bn_C(m+1)^2} = \frac{D}{n_C(m+1)^2}
 \end{eqnarray}
-%
-Here is a second example for an equation: 
-%
-\begin{eqnarray}\label{eq:vcg}
-p_i(\boldsymbol{\hat{v}}) & = &
-\sum_{j \neq i} \hat{v}_j(f(\boldsymbol{\hat{v}}_{-i})) - 
-\sum_{j \neq i} \hat{v}_j(f(\boldsymbol{\hat{v}})) 
-\end{eqnarray}
-%
-Use the usual combination of `\verb|\label|' and `\verb|\ref|' to refer
-to numbered equations, such as Equation~(\ref{eq:vcg}) above. Of course,
-introducing numbers in the first place is only helpful if you in fact 
-need to refer back to the equation in question elsewhere in the paper.
+
+where $D = \frac{(A-c)^2}{b}$, $n_C$ is the number of players in coalition $C$, and $m$ is the number of coalitions in the game. 
+
+\subsection{Integer Partition (IP)}
+
+This research has referenced to the Integer Partition (IP) algorithm developed by Rahwan et al. The algorithm first creates a multiset of positive integer whose sum is $n$. For example, $n=8$, the multiset includes $[4, 3, 1], [2, 2, 2, 2]$ and $[3, 3, 2]$. Then it searches the space by coalition size, and eliminates the search spaces where their maximum utility is smaller than the lower bound. 
+
+Our version of IP will enumerate through all the multisets and compute a certain value for them which the computation will be explained in section \ref{sec:dv-func} and \ref{sec:pv-func}. 
+
+A huge advantage of enumerating throught the multisets is to avoid enumerating the set of coalition structure's n players, whose size is larger than $(\frac{n}{\log n })^n$, while the multisets of n has a much smaller size of at most $e^{\Theta(\sqrt{n})}$. 
+
+In the following sections, we will define two value functions $V^D$ and $V^P$, which will be named as the default value function and the pessimistically value function respectively. These values are responsible for defining the stable CS. 
+
+\subsection{Default value function}
+\label{sec:dv-func}
+
+The default value function $V^D(S, i)$ is the reward received by any player in a size-$i$ coalition when the CS is fixed. 
+For example, $V^D([3], 3) = D/6}$, $V^D([2, 1], 2) = D/18$, and $V^D([2, 1], 1) = D/9$. 
+
+\subsection{Pessimistically value function}
+\label{sec:pv-func}
+
+The pessimistically anticipated value function $V^P(S, i)$ is the pessimisitically anticipated reward (PAR) a player in a size-$i$ coalition might eventually obtain, after any sequence of incentivized betrays by any players.
+
+By incentivized betrayals, we refer to a betrayal initiated by a player such that their PAR with the new CS is strictly better than her default value with the current CS. 
+
+Since coalitions can only be split but not merge in the dynamic betrayal model, $V^P$ can be defined recursively. Let $U$ be the IP $[1, 1, \dots, 1]$, where $1$ occurs $n$ times. This corresponds to the CS where each player forms a coalition by itself. Since no further betrayal can occur from U, $V^P(U, 1)=V^D(U, 1)$. Then $V^P(S, i)$ for any IP $S \neq U$ and $i \in S$ will be defined recursively, going from IPs with the most number of coalitions to the least (the grand coalition).
+
+Before we move forward, we will define a few notation to simplify the presentation. 
+
+\subsubsection{Removal}
+
+Given a multiset $S$ and $i\in S$, let $S - i$ denote the multiset formed by removing S from one occurences of $i$. For example, when $S=[2,2,2,2,1] $, $S-2=[2,2,2,1]$ and $S-1=[2,2,2,2]$. 
+
+\subsubsection{Splitting}
+
+Given a multiset $S$, $i \in S$ and $1 \leq j < i$, let $B(S, i, j)$ 
+
+\subsection{Example}
+
+\subsection{Sequential Blocking}
+
 
 
 \subsection{Tables and Figures}
