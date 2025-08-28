@@ -106,7 +106,9 @@ on Autonomous Agents and Multiagent Systems (AAMAS 2026)}{May 25 -- 29, 2026}
 \subsection{Coalition Structure (CS)}
 
 \ykc{Formal definition of coalition structure, see Michalak.}
-A coalition structure (CS) is the partition of the players into one or more coalitions. For example, when $n=8$, some examples of CS are $\{\{1, 2, 3\}, \{4, 5\}, \{6, 7, 8\}\}$, $\{\{1, 7\}, \{2\}, \{3, 5, 8\}, \{4, 6\}\}$, and $\{\{1, 2, 3, 4, 5, 6, 7, 8\}\}$. The last CS where all players form one single coalition is called a grand coalition. 
+
+%refined definition of Coalition Structure % 
+Referring to Rahwan et al. definition, for any coalition $C$, a coalition structure over $C$ is a collection of coalitions, $CS = \{ C_1, \dots, C_k\}$ such that $\bigcup CS = C$, and for any $C_i \cap C_j = \emptyset$ for any $i, j \in \{1, \dots, k\}:i\neq j$. The set of coalition structures over $C$ will be denoted by $\prod^C$.
 
 In the symmetric game, all players are treated equally. As a result, two CSs that are equivalent up to a relabeling of players yield the same reward distribution. Also, within a given CS, all players belonging to coalitions of the same size receive the same rewards. For example, consider the two CSs $\{1, 2, 3\}, \{4, 5, 6\}, \{7, 8\}$ and $\{1, 3, 7\}, \{2, 5, 8\}, \{4, 6\}$ which are equivalent up to a relabeling of players. The rewards received by players 1, 2, 3, 4, 5, 6 in the first CS are the same as those received by players
 1, 3, 7, 2, 5, 8 in the second CS.
@@ -137,7 +139,21 @@ In this research, as the players are symmetric and all players have a linear dem
 
 where $D = \frac{(A-c)^2}{b}$, $n_C$ is the number of players in coalition $C$, and $m$ is the number of coalitions in the game. 
 
+It should be noted that Nash Equilibrium of Cournot competition does not necessarily admit a closed-form solution. In such cases, we can refer to Bravo et al.'s bandit learning algorithm for N-person games. This way, we can slowly converge to the solution between N players. 
+
 \ykc{In general, Nash Equilibrium of Cournot competition does not necessarily admit a closed-form solution. We can use Bravo's bandit learning algorithm in this case.}
+
+\subsection{Farsightedness} 
+Debraj Ray stated that in non-cooperative games, players must be prepared for two kinds of reprecussion. 
+\begin{enumerate}
+	\item The deviant group must be aware of further deviants by members in their group 
+	\item The deviant group must attempt to predict the coalition structure that arises elsewhere, and not just presume that the group they broke off from will simply stay together
+\end{enumerate}
+These two statements are important as they can easily change the result of the game. For example, imagine the cournot competition game of 3 players. If 1 player decides to leave because their immediate payoff is better than now, as their reward would be $D/9$ instead of $D/12$, the coalition structure becomes [2, 1]. However, the two remaining players would then see their immediate payoff of disbanding the group $D/16$ will be larger than now $D/18$. Therefore, the two reminaing players would leave, and the payoff of the first player who left would be $D/18$ too. This implies that everyone has worsen off. 
+
+If player 1 looked beyond their immediate consequence, they would be able to see that breaking off from the coalition will have a lower reward $D/18$ instead of $D/12$. So, player 1 would have stayed in the grand coalition to obtain a higher payoff. 
+
+This concept of farsightedness will be used towards the model. If players forsee that their payoff will be minimised after breaking off from a coalition, they will retain in the same coalition. 
 
 \subsection{Integer Partition (IP)}
 
@@ -172,15 +188,37 @@ Given a multiset $S$ and $i\in S$, let $S - i$ denote the multiset formed by rem
 
 \subsubsection{Splitting}
 
-Given a multiset $S$, $i \in S$ and $1 \leq j < i$, let $B(S, i, j)$ 
+Given a multiset $S$, $i \in S$ and $1 \leq j < i$, let $B(S, i, j)$ denote the multiset formed by splitting one occurrence of $i$ in $S$ into $j$ and $i-j$. For example, when $S=[5, 5, 2]$, $B(S, 5, 2)  =  [5, 3, 2, 2]$. 
 
+Now for any IP $S \neq U$ and $i \in S$, let 
+\begin{equation}
+ \mathcal{M}(S, i) := \max_{1\leq j \leq \lfloor i/2 \rfloor} V^P (B(S, i, j), j)
+\end{equation}, 
+which is the PAR of a player in a size-$i$ coalition after she betrays by pulling $j$ players (including herself) away from her current coalition, while she chooses the optimal $j$. The player is incentivized to betray only when $\mathcal{M}(S, i)$ is strictly larger than her current default value, and using "maximin" approach, she will choose one of the optimal $j$'s. Accordingly, we define the $i$-betrayal-descendants of $S$ to be 
+\begin{equation}
+	D(S, i) := 
+	\begin{cases}
+		\{B(S, i, j) | V^P(B(S, i, j), j) = \mathcal{M}(s, i)\}, &\text{if } \mathcal{M}(S, i) > V^D (S, i) \\ 
+		\emptyset &\text{if } \mathcal{M}(S, i) \leq V^D(S, i)
+	\end{cases}
+\end{equation}
+which is the set of IPs due to a player in a size-$i$ coalition betraying optimally. When $\mathcal{M}(S, i) \leq V^D(S, i)$, the player is not motivated to betray, so the set of the $i$-betrayal descendants is empty. By viewing the IPs as vertices in a directed graph, and there are directed edges from each S to IPs in $\cup_{i\in S} \mathcal{D}(S, i)$, any sink vertex in this graph (i.e., IPs S where $\cup_{i\in S} \mathcal{D}(S, i)$ empty) corresponds to a stable coalition structure. The PAR value $V^P (S, i)$ is the least possible reward of a player in size-$i$ coalition at any sink which is descendant from S in the above graph, and can be defined as 
+\begin{equation}
+	V^P(S, i) := 
+	\begin{cases}
+		\min \{\min_{S'\in \cup_{k\in S-i}D(S, k)} V^P (S', i), max\{V^D(S, i), \mathcal{M}(S, i) \}\}, &\text{if } \cup_{k\in S-i} \mathcal{D}(S, k) \neq \emptyset \\ 
+		\max{V^D(S, i), \mathcal{M}(S, i), } &\text{otherwise.}
+	\end{cases}
+\end{equation}
 \subsection{Example}
 
 \ykc{$n=6$ seems a reasonable non-trivial but not too hard example to give people ideas.}
+Assuming we have $n=6$ players. As such, 
 
 \subsection{Sequential Blocking}
 
 \ykc{Define sequential blocking. Compare with sequential blocking using the ``minimal'' example.}
+An economic terminology close to our model is sequential blocking. Blocking is where every member of the blocking coalition is strictly better off than before leaving their previous coalition. This is done such that the blocking coalition has an improvement, while the remaining coalition is blocked from obtaining the higher utility from previously. Formally, blocking is defined as follows: 
 
 \section{Algorithm}
 
