@@ -139,7 +139,7 @@ In this research, as the players are symmetric and all players have a linear dem
 
 where $D = \frac{(A-c)^2}{b}$, $n_C$ is the number of players in coalition $C$, and $m$ is the number of coalitions in the game. 
 
-It should be noted that Nash Equilibrium of Cournot competition does not necessarily admit a closed-form solution. In such cases, we can refer to Bravo et al.'s bandit learning algorithm for N-person games. This way, we can slowly converge to the solution between N players. 
+It should be noted that Nash Equilibrium of Cournot competition does not necessarily admit a closed-form solution. In such cases, we can refer to Bravo et al.'s bandit learning algorithm for N-person games. This way, we can slowly converge to the solution between N players. % Put Bravo's bandit learning algorithm in the appendix for reference% 
 
 \ykc{In general, Nash Equilibrium of Cournot competition does not necessarily admit a closed-form solution. We can use Bravo's bandit learning algorithm in this case.}
 
@@ -215,11 +215,20 @@ which is the set of IPs due to a player in a size-$i$ coalition betraying optima
 \ykc{$n=6$ seems a reasonable non-trivial but not too hard example to give people ideas.}
 Assuming we have $n=6$ players. As such, 
 
-\subsection{Sequential Blocking}
+\subsection{Blocking}
 
 \ykc{Define sequential blocking. Compare with sequential blocking using the ``minimal'' example.}
-An economic terminology close to our model is sequential blocking. Blocking is where every member of the blocking coalition is strictly better off than before leaving their previous coalition. This is done such that the blocking coalition has an improvement, while the remaining coalition is blocked from obtaining the higher utility from previously. Formally, blocking is defined as follows: 
+Blocking is where every member of the blocking coalition is strictly better off than before leaving their previous coalition. This is done such that the blocking coalition has an improvement, while the remaining coalition is blocked from obtaining the higher utility from previously. Formally, blocking is defined as follows. Let $u$ be an allocation for a set of players $S$. We say that $(T, u')$ blocks $u$ if $T$ is a subcoalition of $S$, $(\emptyset \neq T \ S)$, $u'$ is feasible for $T$, and $u' >> u^T$. In this case we say $u$ is blocked and that $T$ is the blocking coalition. If no such coalition exists, then $u$ is unblocked.  
+\subsection{Sequential Blocking} 
+An game theory terminology close to our model is sequential blocking. Let a coalition structure be $\pi$, and $a$ is the coalition equilibrium under $\pi$. The residual of any coalition in $\pi$ belongs in $\pi'$, and $a'$ is the coalition equilibrium under $\pi'$. Now, we say that $(\pi', a')$ sequentially blocks $(\pi, a)$ if there exists a sequence $\{(\pi^0, a^0), (\pi^1, a^1), \dots (\pi^m, a^m)\}$ such that 
+\begin{enumerate}
+	\item $(\pi^0, a^0) = (\pi, a), (\pi^m, a^m) = (\pi', a')$, and for every $i = 1, \dots, m$, there is a coalition $S^i$ that includes $(\pi^i, a^i)$ from $(\pi^{i-1}, a^{i-1})$. 
+	\item $u_{S^i}(a')>> u_{S^i}(a^{i-1})$ for all $i = 1, \dots, m$. 
+\end{enumerate}
+In this definition, it is only required that the utility $u$ after breaking off a coalition must be better than before, but does not require the utility to be the best out of all options unlike our model. This implies that sequential blocking may not be as easy to predict as there can be many solutions. For example, 
 
+
+However, for the model, given tested up till $100$ players under cournot competition, there is only exists one solution for each game. The model that we have created is an improvement as it is easier to predict, as it has a stronger condition. 
 \section{Algorithm}
 
 \ykc{runtime, memory analysis}
