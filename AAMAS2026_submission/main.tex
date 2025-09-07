@@ -268,6 +268,7 @@ Therefore, a player will choose to deviate on their own to maximise their profit
 Blocking is where every member of the blocking coalition is strictly better off than before leaving their previous coalition. This is done such that the blocking coalition has an improvement, while the remaining coalition is blocked from obtaining the higher utility from previously. Formally, blocking is defined as follows. Let $u$ be an allocation for a set of players $S$. We say that $(T, u')$ blocks $u$ if $T$ is a subcoalition of $S$, $(\emptyset \neq T \ S)$, $u'$ is feasible for $T$, and $u' \gg u^T$. In this case we say $u$ is blocked and that $T$ is the blocking coalition. If no such coalition exists, then $u$ is unblocked.  
 
 \subsection{Sequential Blocking} 
+\subsubsection{Definition}
 An game theory terminology close to our model is sequential blocking. Let a coalition structure be $\pi$, and $a$ is the coalition equilibrium under $\pi$. The residual of any coalition in $\pi$ belongs in $\pi'$, and $a'$ is the coalition equilibrium under $\pi'$. Now, we say that $(\pi', a')$ sequentially blocks $(\pi, a)$ if there exists a sequence $\{(\pi^0, a^0), (\pi^1, a^1), \dots (\pi^m, a^m)\}$ such that 
 \begin{enumerate}
 	\item $(\pi^0, a^0) = (\pi, a), (\pi^m, a^m) = (\pi', a')$, and for every $i = 1, \dots, m$, there is a coalition $S^i$ that includes $(\pi^i, a^i)$ from $(\pi^{i-1}, a^{i-1})$. 
@@ -275,12 +276,21 @@ An game theory terminology close to our model is sequential blocking. Let a coal
 \end{enumerate}
 In this definition, it is only required that the utility $u$ after breaking off a coalition must be better than before, but does not require the utility to be the best out of all options unlike our model. This implies that sequential blocking may not be as easy to predict as there can be many solutions. 
 
-However, for our model, there only exists one solution for every game up till 100 players. The model that we have created is an improvement as it is easier to predict, as it has a stronger condition. For instance, if we are starting at state $\{4, 2\}$, our model predicts that we will end up in state $\{3, 2, 1\}$. If we use the definition of sequential blocking, we have two possible solutions, $\{3, 2, 1\}$ and $\{2, 2, 2\}$. As $V^P(\{2, 2, 2\}, 2) = D/32$, it is greater than $V^D(\{4, 2\}, 4) = D/36$ and therefore sequential blocking allows $\{2, 2, 2\}$ be the solution.
+\subsubsection{Example}
+For our model, there only exists one solution for every game up till 100 players. The model that we have created is an improvement as it is easier to predict, as it has a stronger condition. For instance, if we are starting at state $\{4, 2\}$, our model predicts that we will end up in state $\{3, 2, 1\}$. If we use the definition of sequential blocking, we have two possible solutions, $\{3, 2, 1\}$ and $\{2, 2, 2\}$. As $V^P(\{2, 2, 2\}, 2) = D/32$, it is greater than $V^D(\{4, 2\}, 4) = D/36$ and therefore sequential blocking allows $\{2, 2, 2\}$ be the solution. Given that sequential blocks have a larger set of solution, we can attempt to proof the following 
+
+\subsubsection{Proof} The set of coalition structure $\mathcal{K}$ computed by our model is a subset or equal to the coalition structures $\mathcal{L}$ created by sequential block. Precisely, 
+\[\mathcal{K} \subseteq \mathcal{L}\]
+
+Note that any coalition structure $k=\{k_1, k_2, \dots, k_n\} \in \mathcal{K}$, there exists at least one coalition structure $k_i$ such that $V^P(k, k_i) > V^D(\{\sum_j^n k\}, \{\sum_j^n k\})$, whch fulfils the second requirement of sequential blocking. Next, note that all coalition in the stable coalition structure was broken off from their original coalition, which fulfils the first requirement. Thus, the statement $\mathcal{K} \subseteq \mathcal{L}$ is true. 
+
+
 \section{Algorithm}
 
 \ykc{runtime, memory analysis}
 
 \subsection{Runtime Analysis}
+\subsection{Memory Analysis} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
