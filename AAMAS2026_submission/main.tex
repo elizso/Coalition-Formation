@@ -25,6 +25,8 @@
 %%% Load required packages here (note that many are included already).
 
 \usepackage{balance} % for balancing columns on the final page
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 
 \newcommand{\ykc}[1]{{\color{blue} #1}}
 
@@ -286,26 +288,49 @@ Note that any coalition structure $k=\{k_1, k_2, \dots, k_n\} \in \mathcal{K}$, 
 
 
 \section{Algorithm}
+The algorithm is written as follows, 
 
+% \Require \Ensure \State \If \For \While are all provided 
+\begin{algorithm}
+	\caption{DynamicBetrayModel}\label{alg:model}
+	\begin{algorithmic}[1] % [1] = line numbers
+		\Require number of firms $N$, payoff function $\Pi(\cdot)$
+		\Ensure a coalition structure $\Pi^\star$
+		\State 
+	\end{algorithmic}
+\end{algorithm}
 \ykc{runtime, memory analysis}
 
+
 \subsection{Runtime Analysis}
-
-
+Without symmetricity, the fastest algorithm takes $O(3^n)$ to recurse through every possible coalition structures of $n$ firms (Rahwan et. al., survey). In our algoirthm, we assume that each firms are symmetric and thus, the amount of states required to recurse through drops from Bell number $B_n$ to $\exp{\pi\sqrt{2n/3}}$. This is because the calculation is minimal in the current algorithm, and that the memory saves the $V^P$ and $V^D$ values so that the states does not need to recursively compute the values again. Therefore, we have 
+\begin{eqnarray}
+	O(\exp{\pi\sqrt{2n/3}}) = O(13.002^{\sqrt{n}})
+\end{eqnarray}
+which is faster than $O(3^n)$ as 
+\begin{eqnarray}
+	\lim_{n \to \inf} \frac{13^{\sqrt{n}}}{3^n} = \exp(\sqrt n \ln 13- n\ln 3) = 0
+\end{eqnarray}
+So $O(13^{\sqrt{n}})$ grows slower than $O(3^n)$. 
 \subsection{Memory Analysis} 
+\subsubsection{Lower bound}
 To save up memory, our program does not save all the $V^P$ and $V^D$ that is after a certain number of recursions. In the case of Cournot competition, we know that the grand coalition of $N$ firms would have $V^D(\{N\}, N) = D\frac{1}{4N}$. So, any maximum $V^D < \frac{1}{4N}$ that coalition structure can generate can be eliminated immediately. And we know that for a number of coalitions $M$, $V^D(\{C_1, C_2, \dots, C_M\}, 1)$ can generate the largest $V^D$ with $M$ coalitions. This gives us the following equation for how many  coalitions $M $ we can eliminate. 
 
 \begin{eqnarray}
 	\frac{1}{(M+1)^2}  < \frac{1}{4N}
 \end{eqnarray}
 
+\subsubsection{Upper bound}
 Another concern is we want to ensure we do not delete too many layers as it may contain information that we still need to use. For instance, we want to know if the state will have agents deviate in the remaining states, causing every agent to be in their own coalition, also known as the worst case scenario. So, we want to limit the $V^D(\{C_1, \dots, C_{M+1}\}, j)$ where $j \geq 2$ to be more than the worst case. Otherwise, the firms will deviate to the worst case scneario. 
-
 \begin{eqnarray}
 	 \frac{1}{j(M+2)^2} > \frac{1}{(N+1)^2}
 \end{eqnarray}
+To ensure that we do not waste too many operations on deleting memory, we have decided to remove 15 layers of memory when ... This way, we can reuse the memories, while not affecting the main algorithm too much. Lastly, the memory complexity would be $O()$. 
 
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{NP-Hard (?)} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\section{Citations and References}
 %  
