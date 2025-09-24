@@ -127,6 +127,8 @@ In the symmetric game, all players are treated equally. As a result, two CSs tha
 In general, coalition formation dynamics can involve both splitting and merging of coalitions, making the analysis complex. We focus on a simpler model in which only splitting is allowed. Initially, all players belong to a single grand coalition, which may undergo a sequence of splits. This process continues until no player has an incentive to leave her current coalition and form a smaller one; we will define incentive formally below. In each coalition of size $i \geq 2$, there is a player who may initiate a betrayal by pulling at most $i$ players (including herself) away from the rest of the coalition.
 
 %TODO - Why only split but not merge?% 
+In this model, players can only split and cannot merge later. We like to think that the cost of merging is greater than the cost of splitting, and since the model is relatively short term, we would not be considering the "merging" step. For example, political parties believe that collaborating between parties is a higher coordination move, and would have to expect a party from leaving. Therefore, it is 
+
 
 \subsection{Nash Equilibrium}
 
@@ -139,10 +141,10 @@ u_i(s^*_i, s_{-i}^*) & \geq & u_i(s_i, s_{-i}^*)
 In this research, as the players are symmetric and all players have a linear demand function $p = A - bx$ with a constant cost $c$, the Nash Equilibrium can be found as follows: 
 
 \begin{eqnarray}
-	\frac{(A-c)^2}{bn_C(m+1)^2} = \frac{D}{n_C(m+1)^2}
+	\frac{(A-c)^2}{bn_C(m+1)^2} = \frac{K}{n_C(m+1)^2}
 \end{eqnarray}
 
-where $D = \frac{(A-c)^2}{b}$, $n_C$ is the number of players in coalition $C$, and $m$ is the number of coalitions in the game. 
+where $K = \frac{(A-c)^2}{b}$, $n_C$ is the number of players in coalition $C$, and $m$ is the number of coalitions in the game. 
 
 It should be noted that Nash Equilibrium of Cournot competition does not necessarily admit a closed-form solution. In such cases, we can refer to Bravo et al.'s bandit learning algorithm for N-person games. This way, we can slowly converge to the solution between N players. The algorithm is in appendix $\_$% Put Bravo's bandit learning algorithm in the appendix for reference% 
 
@@ -154,9 +156,9 @@ Debraj Ray stated that in non-cooperative games, players must be prepared for tw
 	\item The deviant group must be aware of further deviants by members in their group 
 	\item The deviant group must attempt to predict the coalition structure that arises elsewhere, and not just presume that the group they broke off from will simply stay together
 \end{enumerate}
-These two statements are important as they can easily change the result of the game. For example, imagine the cournot competition game of 3 players. If 1 player decides to leave because their immediate payoff is better than now, as their reward would be $D/9$ instead of $D/12$, the coalition structure becomes [2, 1]. However, the two remaining players would then see their immediate payoff of disbanding the group $D/16$ will be larger than now $D/18$. Therefore, the two reminaing players would leave, and the payoff of the first player who left would be $D/18$ too. This implies that everyone has worsen off. 
+These two statements are important as they can easily change the result of the game. For example, imagine the cournot competition game of 3 players. If 1 player decides to leave because their immediate payoff is better than now, as their reward would be $K/9$ instead of $K/12$, the coalition structure becomes [2, 1]. However, the two remaining players would then see their immediate payoff of disbanding the group $K/16$ will be larger than now $K/18$. Therefore, the two reminaing players would leave, and the payoff of the first player who left would be $K/18$ too. This implies that everyone has worsen off. 
 
-If player 1 looked beyond their immediate consequence, they would be able to see that breaking off from the coalition will have a lower reward $D/18$ instead of $D/12$. So, player 1 would have stayed in the grand coalition to obtain a higher payoff. 
+If player 1 looked beyond their immediate consequence, they would be able to see that breaking off from the coalition will have a lower reward $K/18$ instead of $K/12$. So, player 1 would have stayed in the grand coalition to obtain a higher payoff. 
 
 This concept of farsightedness will be used towards the model. If players forsee that their payoff will be minimised after breaking off from a coalition, they will remain in the same coalition. 
 
@@ -174,7 +176,7 @@ In the following sections, we will define two value functions $V^D$ and $V^P$, w
 \label{sec:dv-func}
 
 The default value function $V^D(S, i)$ is the reward received by any player in a size-$i$ coalition when the CS is fixed. 
-For example, $V^D([3], 3) = D/6$, $V^D([2, 1], 2) = D/18$, and $V^D([2, 1], 1) = D/9$. 
+For example, $V^D([3], 3) = K/6$, $V^D([2, 1], 2) = K/18$, and $V^D([2, 1], 1) = K/9$. 
 
 \subsection{Pessimistically value function}
 \label{sec:pv-func}
@@ -238,29 +240,29 @@ which is the set of IPs due to a player in a size-$i$ coalition betraying optima
 \end{figure}
 
 \ykc{$n=6$ seems a reasonable non-trivial but not too hard example to give people ideas.}
-As an example, we will use $n=6$ players under the cournot competition, as such the Nash Equilibrium of each player will be defaulted to $\frac{D}{n_C(m+1)^2}$. 
+As an example, we will use $n=6$ players under the cournot competition, as such the Nash Equilibrium of each player will be defaulted to $\frac{K}{n_C(m+1)^2}$. 
 
-As this is a dynamic programming program, we shall start with coalition structure $\{1, 1, 1, 1, 1, 1\}$ and recursively move up each state in Figure 1. The PAR of each player is $D/49$ for some value $D$, and $V^D = D/49$ too. Therefore, $\{1, 1, 1, 1, 1, 1\}$ is a stable coalition since no player can defect by leaving their coalition. 
+As this is a dynamic programming program, we shall start with coalition structure $\{1, 1, 1, 1, 1, 1\}$ and recursively move up each state in Figure 1. The PAR of each player is $K/49$ for some value $K$, and $V^D = K/49$ too. Therefore, $\{1, 1, 1, 1, 1, 1\}$ is a stable coalition since no player can defect by leaving their coalition. 
 
-Moving up, the coalition structure is $\{2, 1, 1, 1, 1\}$. Again, the PAR of each player that are in their own coalition is $D/49$. As for the coalition with two players, their default value function $V^D$ is $D/72$ but splitting would give a $V^D$ of $D/49$ each. Therefore, splitting would be a better choice. 
+Moving up, the coalition structure is $\{2, 1, 1, 1, 1\}$. Again, the PAR of each player that are in their own coalition is $K/49$. As for the coalition with two players, their default value function $V^D$ is $K/72$ but splitting would give a $V^D$ of $K/49$ each. Therefore, splitting would be a better choice. 
 
-As for $\{3, 1, 1, 1\}$ and $\{2, 2, 1, 1\}$. The PAR for all players in both structure would be $D/49$, as each player presumes the worse outcome can happen to them and expect that going to state $\{2, 1, 1, 1, 1\}$ will end up in state $\{1, 1, 1, 1, 1, 1\}$. At $S=\{3, 1, 1, 1\}$, $V^D(S, 3) = D/75$. Since $V^P(S, 3) = D/49$, the 3 players in the coalition will split into $\{2, 1\}$. Similarly, when $V^D(\{2, 2, 1, 1\}, 2) = D/50$ and $V^P(\{2, 2, 1, 1\}, 2) = D/49$, the 2 players in the coalition will split into $\{1, 1\}$. 
+As for $\{3, 1, 1, 1\}$ and $\{2, 2, 1, 1\}$. The PAR for all players in both structure would be $K/49$, as each player presumes the worse outcome can happen to them and expect that going to state $\{2, 1, 1, 1, 1\}$ will end up in state $\{1, 1, 1, 1, 1, 1\}$. At $S=\{3, 1, 1, 1\}$, $V^D(S, 3) = K/75$. Since $V^P(S, 3) = K/49$, the 3 players in the coalition will split into $\{2, 1\}$. Similarly, when $V^D(\{2, 2, 1, 1\}, 2) = K/50$ and $V^P(\{2, 2, 1, 1\}, 2) = K/49$, the 2 players in the coalition will split into $\{1, 1\}$. 
 
-Moving onto $\{4, 1, 1\}$, the PAR for all players is $D/49$. Note that $V^D(\{4, 1, 1\}, 4) = D/64$, hence players in the coalition of 4 will split into $\{3, 1\}$ or $\{2, 2\}$. As for $\{3, 2, 1\}$, $V^D(\{3, 2, 1\}, 3) = D/48$, $V^D(\{3, 2, 1\}, 2) = D/32$ and $V^D(\{3, 2, 1\}, 3) = D/16$ which are all larger than $D/49$. Therefore, $\{3, 2, 1\}$ is a stable state as no agent has the incentive to further deviate, implying that $V^P(\{3, 2, 1\}, 3) = 48$, $V^P(\{3, 2, 1\}, 2) = D/32$ and $V^P(\{3, 2, 1\}, 3) = D/16$. Similarly for $\{2, 2, 2\}$, $V^D(\{2, 2, 2\}, 2) = D/32 > V^P(\{2, 2, 1, 1\}, 1) = D/49$. So, $\{2, 2, 2\}$ is also a stable state, and $V^P(\{2, 2, 2\}, 2) = D/32$. 
+Moving onto $\{4, 1, 1\}$, the PAR for all players is $K/49$. Note that $V^D(\{4, 1, 1\}, 4) = K/64$, hence players in the coalition of 4 will split into $\{3, 1\}$ or $\{2, 2\}$. As for $\{3, 2, 1\}$, $V^D(\{3, 2, 1\}, 3) = K/48$, $V^D(\{3, 2, 1\}, 2) = K/32$ and $V^D(\{3, 2, 1\}, 3) = K/16$ which are all larger than $K/49$. Therefore, $\{3, 2, 1\}$ is a stable state as no agent has the incentive to further deviate, implying that $V^P(\{3, 2, 1\}, 3) = K/48$, $V^P(\{3, 2, 1\}, 2) = K/32$ and $V^P(\{3, 2, 1\}, 3) = K/16$. Similarly for $\{2, 2, 2\}$, $V^D(\{2, 2, 2\}, 2) = K/32 > V^P(\{2, 2, 1, 1\}, 1) = K/49$. So, $\{2, 2, 2\}$ is also a stable state, and $V^P(\{2, 2, 2\}, 2) = K/32$. 
 
-Looking into $\{5, 1\}$, $V^D(\{5, 1\}, 5) = D/45$. The coalition of 5 can decide to split into $\{4, 1\}$ or $\{3, 2\}$. Given that $V^P(\{3, 2, 1\}, 2) = D/32$, and $V^P(\{4, 1, 1\}, 1) = D/49$, 2 players of the coalition will choose to deviate from their original coalition to obtain a higher utility of $D/32$. Therefore, the PARs are $V^P(B(\{5, 1\}, 5, 2), 2) = D/32$, $V^P(B(\{5, 1\}, 5, 3), 3) = D/48$ and $V^P(\{5, 1\}, 1) = D/16$. 
+Looking into $\{5, 1\}$, $V^D(\{5, 1\}, 5) = K/45$. The coalition of 5 can decide to split into $\{4, 1\}$ or $\{3, 2\}$. Given that $V^P(\{3, 2, 1\}, 2) = D/32$, and $V^P(\{4, 1, 1\}, 1) = K/49$, 2 players of the coalition will choose to deviate from their original coalition to obtain a higher utility of $K/32$. Therefore, the PARs are $V^P(B(\{5, 1\}, 5, 2), 2) = K/32$, $V^P(B(\{5, 1\}, 5, 3), 3) = K/48$ and $V^P(\{5, 1\}, 1) = K/16$. 
 
-With $\{4, 2\}$, $V^D(\{4, 2\}, 4) = D/36$ and $V^D(\{4, 2\}, 2) = D/18$. The coalition of 2 playes have no incentive to break off as $V^P(\{4, 1, 1\}, 1) = D/49 < D/18$. However, the coalition of 4 players can break off into $\{3, 1\}$ or $\{2, 2\}$. We can consider whether a player of the coalition would deviate only, with one partner, or with 2. Given that we know $V^P(\{3, 2, 1\}, 1) = D/16$, $V^P(\{2, 2, 2\}, 2) = D/32$, and $V^P(\{3, 2, 1\}, 3) = D/48$, the player shall maximise from all of the $V^Ps$, and choose to deviate by themselves, $V^P(\{3, 2, 1\}, 1)$. Therefore, the PARs are $V^P(\{4, 2\}, 2) = D/32$, $V^P(B(\{4, 2\}, 4, 3),3) = D/48$ and $V^P(B(\{4, 2\}, 4, 1), 1) = D/16$. 
+With $\{4, 2\}$, $V^D(\{4, 2\}, 4) = K/36$ and $V^D(\{4, 2\}, 2) = K/18$. The coalition of 2 playes have no incentive to break off as $V^P(\{4, 1, 1\}, 1) = K/49 < K/18$. However, the coalition of 4 players can break off into $\{3, 1\}$ or $\{2, 2\}$. We can consider whether a player of the coalition would deviate only, with one partner, or with 2. Given that we know $V^P(\{3, 2, 1\}, 1) = K/16$, $V^P(\{2, 2, 2\}, 2) = K/32$, and $V^P(\{3, 2, 1\}, 3) = K/48$, the player shall maximise from all of the $V^Ps$, and choose to deviate by themselves, $V^P(\{3, 2, 1\}, 1)$. Therefore, the PARs are $V^P(\{4, 2\}, 2) = K/32$, $V^P(B(\{4, 2\}, 4, 3),3) = K/48$ and $V^P(B(\{4, 2\}, 4, 1), 1) = K/16$. 
 
-Last one in this layer, $\{3, 3\}$, coalitions can only choose to break off to $\{2, 1\}$ or remain the same. Given that $V^P(\{3, 2, 1\}, 1) = D/16$ and $V^P(\{3, 2, 1\}, 2) = D/32$, players would maximise by choosing to deviate alone, $V^P(\{3, 2, 1\}, 1) = D/16$. Therefore, the PAR for each would be $V^P(\{3, 3\}, 3) = D/48$, $V^P(B(\{3, 3\}, 3, 2), 2) = D/32$, and $V^P(B(\{3, 3\}, 3, 1), 1) = D/16$. 
+Last one in this layer, $\{3, 3\}$, coalitions can only choose to break off to $\{2, 1\}$ or remain the same. Given that $V^P(\{3, 2, 1\}, 1) = K/16$ and $V^P(\{3, 2, 1\}, 2) = K/32$, players would maximise by choosing to deviate alone, $V^P(\{3, 2, 1\}, 1) = K/16$. Therefore, the PAR for each would be $V^P(\{3, 3\}, 3) = K/48$, $V^P(B(\{3, 3\}, 3, 2), 2) = K/32$, and $V^P(B(\{3, 3\}, 3, 1), 1) = K/16$. 
 
 Finally, $\{6\}$ can choose to break off into $\{5, 1\}, \{4, 2\}$ and $\{3, 3\}$. Firstly, we find the minimum of each PAR for splitting alone, 2, 3, 4, and 5, which is as follows: 
 \begin{itemize}
-	\item $V^P(B(\{6\}, 6, 1), 1) = D/16$
-	\item $V^P(B(\{6\}, 6, 2), 2) = D/32$ 
-	\item $V^P(B(\{6\}, 6, 3), 3) = D/48$
-	\item $V^P(B(\{6\}, 6, 4), 4) = D/48$
-	\item $V^P(B(\{6\}, 6, 5), 5) = D/48$
+	\item $V^P(B(\{6\}, 6, 1), 1) = K/16$
+	\item $V^P(B(\{6\}, 6, 2), 2) = K/32$ 
+	\item $V^P(B(\{6\}, 6, 3), 3) = K/48$
+	\item $V^P(B(\{6\}, 6, 4), 4) = K/48$
+	\item $V^P(B(\{6\}, 6, 5), 5) = K/48$
 \end{itemize}
 Therefore, a player will choose to deviate on their own to maximise their profit. Hence, $\{6\}$ will break into $\{5, 1\}$ into $\{3, 2, 1\}$. The path is highlighted in red in Figure 1. 
 
@@ -279,7 +281,7 @@ An game theory terminology close to our model is sequential blocking. Let a coal
 In this definition, it is only required that the utility $u$ after breaking off a coalition must be better than before, but does not require the utility to be the best out of all options unlike our model. This implies that sequential blocking may not be as easy to predict as there can be many solutions. 
 
 \subsubsection{Example}
-For our model, there only exists one solution for every game up till 100 players. The model that we have created is an improvement as it is easier to predict, as it has a stronger condition. For instance, if we are starting at state $\{4, 2\}$, our model predicts that we will end up in state $\{3, 2, 1\}$. If we use the definition of sequential blocking, we have two possible solutions, $\{3, 2, 1\}$ and $\{2, 2, 2\}$. As $V^P(\{2, 2, 2\}, 2) = D/32$, it is greater than $V^D(\{4, 2\}, 4) = D/36$ and therefore sequential blocking allows $\{2, 2, 2\}$ be the solution. Given that sequential blocks have a larger set of solution, we can attempt to proof the following 
+For our model, there only exists one solution for every game up till 100 players. The model that we have created is an improvement as it is easier to predict, as it has a stronger condition. For instance, if we are starting at state $\{4, 2\}$, our model predicts that we will end up in state $\{3, 2, 1\}$. If we use the definition of sequential blocking, we have two possible solutions, $\{3, 2, 1\}$ and $\{2, 2, 2\}$. As $V^P(\{2, 2, 2\}, 2) = K/32$, it is greater than $V^D(\{4, 2\}, 4) = K/36$ and therefore sequential blocking allows $\{2, 2, 2\}$ be the solution. Given that sequential blocks have a larger set of solution, we can attempt to proof the following 
 
 \subsubsection{Proof} The set of coalition structure $\mathcal{K}$ computed by our model is a subset or equal to the coalition structures $\mathcal{L}$ created by sequential block. Precisely, 
 \[\mathcal{K} \subseteq \mathcal{L}\]
