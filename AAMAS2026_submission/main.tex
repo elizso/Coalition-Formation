@@ -272,7 +272,7 @@ Therefore, a player will choose to deviate on their own to maximise their profit
 \ykc{Define sequential blocking. Compare with sequential blocking using the ``minimal'' example.}
 Blocking is where every member of the blocking coalition is strictly better off than before leaving their previous coalition. This is done such that the blocking coalition has an improvement, while the remaining coalition is blocked from obtaining the higher utility from previously. Formally, blocking is defined as follows. Let $u$ be an allocation for a set of players $S$. We say that $(T, u')$ blocks $u$ if $T$ is a subcoalition of $S$, $(\emptyset \neq T \ S)$, $u'$ is feasible for $T$, and $u' \gg u^T$. In this case we say $u$ is blocked and that $T$ is the blocking coalition. If no such coalition exists, then $u$ is unblocked.  
 
-\subsection{Sequential Blocking} 
+\subsection{Sequential Blocking} \label{sec:seq-block}
 \subsubsection{Definition}
 An game theory terminology close to our model is sequential blocking. Let a coalition structure be $\pi$, and $a$ is the coalition equilibrium under $\pi$. The residual of any coalition in $\pi$ belongs in $\pi'$, and $a'$ is the coalition equilibrium under $\pi'$. Now, we say that $(\pi', a')$ sequentially blocks $(\pi, a)$ if there exists a sequence $\{(\pi^0, a^0), (\pi^1, a^1), \dots (\pi^m, a^m)\}$ such that 
 \begin{enumerate}
@@ -330,7 +330,7 @@ Another concern is we want to ensure we do not delete too many layers as it may 
 \end{eqnarray}
 To ensure that we do not waste too many operations on deleting memory, we have decided to remove 15 layers of memory when ... This way, we can reuse the memories, while not affecting the main algorithm too much. Lastly, the memory complexity would be $O()$. 
 
-\section{NP-Hard (?)} 
+\section{PLS} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

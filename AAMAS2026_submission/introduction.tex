@@ -6,9 +6,24 @@
 
 \noindent \ykc{RV99 abstract wrote ``we provide a uniqueness theorem and apply our results to a Cournot oligopoly''. We should understand what the theorem is and how their results are relevant to ours.}
 
-\subsection*{Related Work}
+\subsection*{Related Games}
 Our model differs from other standard cooperative game models. Standard cooperative games using Shapley or core values or even Hedonic games use characteristic function which is independent of outsiders. Their coalition payoffs are fixed regardless of what others do, unlike our model, the payoff is partition dependent. The payoff in our model would have to be calculated recursively by simulating what the best response would be. 
 
 In addition, standard cooperative games allow solution concepts such as Shapley or core values to be applied directly to the characteristic function. However, in our model, these concepts would only be applied after computing the partition-dependent payoffs. 
 
 Moreover, Hedonic games requires a different input to our model. Each agent in Hedonic games has a preference ordering coalitions that contain them, where the preference is the factor of whether an agent stays in the coalition. Yet, agents in our model decide whether to stay in one coalition by their own payoff which is dependent to other agents' movements.
+
+\subsection*{Related Work}
+Ray and Vohra were one of the first authors who discussed about coalition formation with partition function rather than characteristic functions. Their model developed in 1997 first focuses on defining what it means for agreeements to be binding in environment with externalities. Instead of using characteristic function, which assumes deviators fear minmax retaliation, their model accounts for what happens when a coalition blocks a proposed agreement and how both the deviating coalition and its complement will might further reorganise. In their work, if every player stands alone, the equilibrium binding agreement (EBA) would be the Nash equilibria of the underlying strategic game. For every coalition structure, if there are any refinements where a coalition splits into two, perpetrators (or deviators) will have to propose new structures and the leftover players will form residuals. Then, they defined a notion called blocking. For some coalition structure $\mathcal{P}$,  $\mathcal{P}^*$ as the refinement coalition structure, $x$ as a binding agreement for $\mathcal{P}$ and $x'$ as a strategy for $\mathcal{P}^*$, $(\mathcal{P}, x)$ is blocked by $(\mathcal{P}^*, x')$ if 
+\begin{enumerate}
+	\item $x'$ is a binding agreement of $\mathcal{P}^*$ 
+	\item There is a leading perpetrator S which gains from the move 
+	\item Any re-merging of the other perpetrator is blocked by $(\mathcal{P}^*, x')$.  
+\end{enumerate}
+Finally,$(\mathcal{P}, x)$ is an equilibrium binding agreement if no refinement blocks it. This model will be different from our model as our model will foucs on where the leading perpetrator gains the most from the move rather than just simply gaining. This implies that our model will be an improvement as it is easier to predict due to a stronger condition. The proof will be provided in \ref{sec:seq-block}. 
+
+Ray and Vohra then developed an algorithm that generates an equilibrium coalition structure under symmetric partition functions. Firstly, they proposed the bargaining game, where players propose coalitions and payoff divisions while respondents can either accept or reject. If the proposal is rejected, the new proposals will be discounted according to time. They proved that the equilibrium notion is a stationary subgame-perfect equilibrium. Then, they defined the coalition structure algorithm with a recursive procedure to compute the predicted coalition structure $n^*$. 
+
+Here are some notations for the algorithm. Let $n$ be the coalition structure $n = (n_1, n_2, \dots, n_i)$ where it is a list of coalition size, and $N$ be the number of players. Then $K(n)$ is the total number of players that have already been placed where $K(n) = \sum n_j$. The worth of an $s$ player coalition in that coalition structure would be notated as $v(s, n)$. Due to symmetricity, the worth only depends on the sizes present in the final coalition structure. They have also defined $c(n)$ as the recursive completion. In this recursion, if $K(n) = N$, then $c(n) = n$. Otherwise, given a partial list $n$, pick the next size $t(n) = s$, append it and recurse $c(n) = c(n + t(n))$, where $+$ means append in this case. When evaluating the worth, we always use the full completed structure $c(n+s)$. 
+
+The algorithm first initialises a null vector $\emptyset$. As such, $K(\emptyset) = 0$. The algorithm then checks if $K(n) = N$, and would stop and output $n^* = n$. Otherwise, for each feasible size $s \in \{1, \dots , N-K(n)\}$, it will tentatively append $s$ into $n'$, making $n' = s + n$. 
