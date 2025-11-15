@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for i in {3..100}
+for i in {38..38}
 do
-    ./main $i 15
+    ./main_decremental $i
 done
