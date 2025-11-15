@@ -1,0 +1,170 @@
+%%%% ijcai26.tex
+
+\typeout{IJCAI--26 Instructions for Authors}
+
+% These are the instructions for authors for IJCAI-25.
+
+\documentclass{article}
+\pdfpagewidth=8.5in
+\pdfpageheight=11in
+
+% The file ijcai25.sty is a copy from ijcai22.sty
+% The file ijcai22.sty is NOT the same as previous years'
+\usepackage{ijcai26}
+
+% Use the postscript times font!
+\usepackage{times}
+\usepackage{soul}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[small]{caption}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage[noend]{algpseudocode}
+\usepackage{color}
+\usepackage[switch]{lineno}
+
+% Comment out this line in the camera-ready submission
+\linenumbers
+
+\urlstyle{same}
+
+% the following package is optional:
+%\usepackage{latexsym}
+
+% See https://www.overleaf.com/learn/latex/theorems_and_proofs
+% for a nice explanation of how to define new theorems, but keep
+% in mind that the amsthm package is already included in this
+% template and that you must *not* alter the styling.
+\newtheorem{example}{Example}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\ykc}[1]{{\color{blue} #1}}
+
+% Following comment is from ijcai97-submit.tex:
+% The preparation of these files was supported by Schlumberger Palo Alto
+% Research, AT\&T Bell Laboratories, and Morgan Kaufmann Publishers.
+% Shirley Jowell, of Morgan Kaufmann Publishers, and Peter F.
+% Patel-Schneider, of AT\&T Bell Laboratories collaborated on their
+% preparation.
+
+% These instructions can be modified and used in other conferences as long
+% as credit to the authors and supporting agencies is retained, this notice
+% is not changed, and further modification or reuse is not restricted.
+% Neither Shirley Jowell nor Peter F. Patel-Schneider can be listed as
+% contacts for providing assistance without their prior permission.
+
+% To use for other conferences, change references to files and the
+% conference appropriate and use other authors, contacts, publishers, and
+% organizations.
+% Also change the deadline and address for returning papers and the length and
+% page charge instructions.
+% Put where the files are available in the appropriate places.
+
+
+% PDF Info Is REQUIRED.
+
+% Please leave this \pdfinfo block untouched both for the submission and
+% Camera Ready Copy. Do not include Title and Author information in the pdfinfo section
+\pdfinfo{
+/TemplateVersion (IJCAI.2026.0)
+}
+
+\title{Equilibrium of Coalition Formation Games with Farsighted Perpetrators}
+
+
+% Single author syntax
+%\author{
+%    Author Name
+%    \affiliations
+%    Affiliation
+%    \emails
+%    email@example.com
+%}
+
+% Multiple author syntax (remove the single-author syntax above and the \iffalse ... \fi here)
+\iffalse
+\author{
+Eliz B.~So$^1$
+\and
+Yun Kuen Cheung$^1$\\
+\affiliations
+$^1$Australian National University\\
+%$^2$Second Affiliation\\
+%$^3$Third Affiliation\\
+%$^4$Fourth Affiliation\\
+\emails
+\{eliz.so, yunkuen.cheung\}@anu.edu.au %,
+%third@other.example.com,
+%fourth@example.com
+}
+\fi
+
+\begin{document}
+
+\maketitle
+
+\input{abstract}
+\input{introduction}
+\input{model} % for discussing important definitions and the models in this paper
+\input{algorithms}
+\input{memory_optimization}
+\input{case_studies}
+\input{conclusion}
+
+%\paragraph{Titled paragraphs.} You should use titled paragraphs if and
+%only if the title covers exactly one paragraph. Such paragraphs should be
+%separated from the preceding content by at least 3pt, and no more than
+%6pt. The title should be in 10pt bold font and to end with a period.
+%After that, a 1em horizontal space should follow the title before
+%the paragraph's text.
+%
+%\subsubsection{Appendices}
+%You may move some of the contents of the paper into one or more appendices that appear after the main content, but before references. These appendices count towards the page limit and are distinct from the supplementary material that can be submitted separately through CMT. Such appendices are useful if you would like to include highly technical material (such as a lengthy calculation) that will disrupt the flow of the paper. They can be included both in papers submitted for review and in camera-ready versions; in the latter case, they will be included in the proceedings (whereas the supplementary materials will not be included in the proceedings).
+%Appendices are optional. Appendices must appear after the main content.
+%Appendix sections must use letters instead of Arabic numerals. In \LaTeX,  you can use the {\tt \textbackslash{}appendix} command to achieve this followed by  {\tt \textbackslash section\{Appendix\}} for your appendix sections.
+
+%\begin{algorithm}[tb]
+%\caption{Example algorithm}
+%\label{alg:algorithm}
+%\textbf{Input}: Your algorithm's input\\
+%\textbf{Parameter}: Optional list of parameters\\
+%\textbf{Output}: Your algorithm's output
+%\begin{algorithmic}[1] %[1] enables line numbers
+%    \STATE Let $t=0$.
+%    \WHILE{condition}
+%    \STATE Do some action.
+%    \IF {conditional}
+%    \STATE Perform task A.
+%    \ELSE
+%    \STATE Perform task B.
+%    \ENDIF
+%    \ENDWHILE
+%    \STATE \textbf{return} solution
+%\end{algorithmic}
+%\end{algorithm}
+
+\newpage
+
+\appendix
+
+\section*{Ethical Statement}
+
+There are no ethical issues.
+
+\section*{Acknowledgments}
+
+To be written.
+
+
+%% The file named.bst is a bibliography style file for BibTeX 0.99c
+\bibliographystyle{named}
+\bibliography{CoalitionStructureFormation}
+
+\end{document}
+
