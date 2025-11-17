@@ -1,112 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%% LaTeX Template for AAMAS-2026 (based on sample-sigconf.tex)
-%%% Prepared by the AAMAS-2026 Publication Chairs based on the version from AAMAS-2025. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%% Start your document with the \documentclass command.
-
-
-%%% == IMPORTANT ==
-%%% Use the first variant below for the final paper (including author information).
-%%% Use the second variant below to anonymize your submission (no author information shown).
-%%% For further information on anonymity and double-blind reviewing, 
-%%% please consult the call for paper information
-%%% https://cyprusconferences.org/aamas2026/submission-instructions/
-
-%%%% For anonymized submission, use this
-\documentclass[sigconf,anonymous]{aamas} 
-
-%%%% For camera-ready, use this
-%\documentclass[sigconf]{aamas} 
-
-
-%%% Load required packages here (note that many are included already).
-
-\usepackage{balance} % for balancing columns on the final page
-\usepackage{algorithm}
-\usepackage[noend]{algpseudocode}
-
-\newcommand{\ykc}[1]{{\color{blue} #1}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%% AAMAS-2026 copyright block (do not change!)
-
-\setcopyright{ifaamas}
-\acmConference[AAMAS '26]{Proc.\@ of the 25th International Conference
-on Autonomous Agents and Multiagent Systems (AAMAS 2026)}{May 25 -- 29, 2026}
-{Paphos, Cyprus}{C.~Amato, L.~Dennis, V.~Mascardi, J.~Thangarajah (eds.)}
-\copyrightyear{2026}
-\acmYear{2026}
-\acmDOI{}
-\acmPrice{}
-\acmISBN{}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%% == IMPORTANT ==
-%%% Use this command to specify your submission number.
-%%% In anonymous mode, it will be printed on the first page.
-
-\acmSubmissionID{<<submission id>>}
-
-%%% Use this command to specify the title of your paper.
-
-\title[Stable Coalition Structures]{Stable Coalition Structures of Symmetric\\
-Coalition Formation Games with Farsighted Perpetrators}
-
-%%% Provide names, affiliations, and email addresses for all authors.
-
-\author{Eliz B.~So}
-\affiliation{
-  \institution{Australian National University}
-  \city{Canberra}
-  \country{Australia }}
-\email{eliz.so@anu.edu.au}
-
-\author{Yun Kuen Cheung}
-\affiliation{
-  \institution{Australian National University}
-  \city{Canberra}
-  \country{Australia}}
-\email{yunkuen.cheung@anu.edu.au}
-
-%%% Use this environment to specify a short abstract for your paper.
-
-\input{abstract}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%% Include any author-defined commands here.
-         
-\newcommand{\BibTeX}{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em\TeX}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{document}
-
-%%% The following commands remove the headers in your paper. For final 
-%%% papers, these will be inserted during the pagination process.
-
-\pagestyle{fancy}
-\fancyhead{}
-
-%%% The next command prints the information defined in the preamble.
-
-\maketitle 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\input{introduction} % introduction and related work
-% create more .tex files as needed, say one .tex file per section; this can avoid some trouble when both of us are making edits before paper deadline
-
-<<<<<<< HEAD
-
-
-\section{Notations}
+\section{Models}
 
 
 \subsection{Coalition Structure (CS)}
@@ -137,7 +29,7 @@ In this model, players can only split and cannot merge later. We like to think t
 The definition of Nash Equilibrium is the set of strategies such that no player can unilaterally deviate from their strategy to get a higher payoff, given the strategies of all other players. Formally, we can let $A$ to be the set of players, $S_i$ to be the set of strategies available to players, $S$ as the strategy profiles, $u_i$ as the payoff function of each player $i$. Then $s^*\in S$ is a Nash Equilibrium of a strategic game if and only if $\forall i \in A$ and $\forall s_i \in S_i$, 
 
 \begin{eqnarray}
-u_i(s^*_i, s_{-i}^*) & \geq & u_i(s_i, s_{-i}^*)
+	u_i(s^*_i, s_{-i}^*) & \geq & u_i(s_i, s_{-i}^*)
 \end{eqnarray} 
 
 In this research, as the players are symmetric and all players have a linear demand function $p = A - bx$ with a constant cost $c$, the Nash Equilibrium can be found as follows: 
@@ -201,7 +93,7 @@ Given a multiset $S$, $i \in S$ and $1 \leq j < i$, let $B(S, i, j)$ denote the 
 
 Now for any IP $S \neq U$ and $i \in S$, let 
 \begin{equation}
- \mathcal{M}(S, i) := \max_{1\leq j \leq \lfloor i/2 \rfloor} V^P (B(S, i, j), j)
+	\mathcal{M}(S, i) := \max_{1\leq j \leq \lfloor i/2 \rfloor} V^P (B(S, i, j), j)
 \end{equation}
 which is the PAR of a player in a size-$i$ coalition after she betrays by pulling $j$ players (including herself) away from her current coalition, while she chooses the optimal $j$. The player is incentivized to betray only when $\mathcal{M}(S, i)$ is strictly larger than her current default value, and using "maximin" approach, she will choose one of the optimal $j$'s. Accordingly, we define the $i$-betrayal-descendants of $S$ to be 
 \begin{equation}
@@ -289,105 +181,3 @@ For our model, there only exists one solution for every game up till 100 players
 \[\mathcal{K} \subseteq \mathcal{L}\]
 
 Note that any coalition structure $k=\{k_1, k_2, \dots, k_n\} \in \mathcal{K}$, there exists at least one coalition structure $k_i$ such that $V^P(k, k_i) > V^D(\{\sum_j^n k\}, \{\sum_j^n k\})$, whch fulfils the second requirement of sequential blocking. Next, note that all coalition in the stable coalition structure was broken off from their original coalition, which fulfils the first requirement. Thus, the statement $\mathcal{K} \subseteq \mathcal{L}$ is true. 
-
-
-\section{Algorithm}
-The algorithm is written as follows, 
-
-% \Require \Ensure \State \If \For \While are all provided 
-\begin{algorithm}
-	\caption{DynamicBetrayModel}\label{alg:model}
-	\begin{algorithmic}[1] % [1] = line numbers
-		\Require number of firms $N$, payoff function $\Pi(\cdot)$
-		\Ensure a coalition structure $\Pi^\star$
-		\State 
-	\end{algorithmic}
-\end{algorithm}
-\ykc{runtime, memory analysis}
-
-
-\subsection{Runtime Analysis}
-Without symmetricity, the fastest algorithm takes $O(3^n)$ to recurse through every possible coalition structures of $n$ firms (Rahwan et. al., survey). In our algoirthm, we assume that each firms are symmetric and thus, the amount of states required to recurse through drops from Bell number $B_n$ to $\exp{\pi\sqrt{2n/3}}$. This is because the calculation is minimal in the current algorithm, and that the memory saves the $V^P$ and $V^D$ values so that the states does not need to recursively compute the values again. Therefore, we have 
-\begin{eqnarray}
-	O(\exp{\pi\sqrt{2n/3}}) = O(13.002^{\sqrt{n}})
-\end{eqnarray}
-which is faster than $O(3^n)$ as 
-\begin{eqnarray}
-	\lim_{n \to \inf} \frac{13^{\sqrt{n}}}{3^n} = \exp(\sqrt n \ln 13- n\ln 3) = 0
-\end{eqnarray}
-So $O(13^{\sqrt{n}})$ grows slower than $O(3^n)$. 
-\subsection{Memory Analysis} 
-\subsubsection{Lower bound}
-To save up memory, our program does not save all the $V^P$ and $V^D$ that is after a certain number of recursions. In the case of Cournot competition, we know that the grand coalition of $N$ firms would have $V^D(\{N\}, N) = D\frac{1}{4N}$. So, any maximum $V^D < \frac{1}{4N}$ that coalition structure can generate can be eliminated immediately. And we know that for a number of coalitions $M$, $V^D(\{C_1, C_2, \dots, C_M\}, 1)$ can generate the largest $V^D$ with $M$ coalitions. This gives us the following equation for how many  coalitions $M $ we can eliminate. 
-
-\begin{eqnarray}
-	\frac{1}{(M+1)^2}  < \frac{1}{4N}
-\end{eqnarray}
-
-\subsubsection{Upper bound}
-Another concern is we want to ensure we do not delete too many layers as it may contain information that we still need to use. For instance, we want to know if the state will have agents deviate in the remaining states, causing every agent to be in their own coalition, also known as the worst case scenario. So, we want to limit the $V^D(\{C_1, \dots, C_{M+1}\}, j)$ where $j \geq 2$ to be more than the worst case. Otherwise, the firms will deviate to the worst case scneario. 
-\begin{eqnarray}
-	 \frac{1}{j(M+2)^2} > \frac{1}{(N+1)^2}
-\end{eqnarray}
-To ensure that we do not waste too many operations on deleting memory, we have decided to remove 15 layers of memory when ... This way, we can reuse the memories, while not affecting the main algorithm too much. Lastly, the memory complexity would be $O()$. 
-
-\section{PSPACE} 
-
-
-=======
->>>>>>> e031f985576a971ee54c8e41421afe9ca06d6d3d
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\section{Citations and References}
-%  
-%The use of the \BibTeX\ to prepare your list of references is highly 
-%recommended. To include the references at the end of your document, put 
-%the following two commands just before the `\verb|\end{document}|' 
-%command in your source file:
-%%
-%\begin{verbatim}
-%   \bibliographystyle{ACM-Reference-Format}
-%   \bibliography{sample}
-%\end{verbatim}
-%%
-%Here we assume that `\texttt{sample.bib}' is the name of your 
-%\BibTeX\ file. Use the `\verb|\cite|' command to produce citations 
-%to your references. Here are a few examples for citations of journal 
-%articles~\cite{GrKr96,WoJe95}, books~\cite{Knu97}, articles in 
-%conference proceedings~\cite{Hag1993}, technical reports~\cite{Har78},
-%Master's and PhD theses~\cite{Ani03,Cla85}, online videos~\cite{Oba08}, 
-%datasets~\cite{AnMC13}, and patents~\cite{Sci09}. Both citations and 
-%references are numbered by default. 
-%
-%Make sure you provide complete and correct bibliographic information 
-%for all your references, and list authors with their full names 
-%(``Donald E.\ Knuth'') rather than just initials (``D.\ E.\ Knuth''). 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%% The acknowledgments section is defined using the "acks" environment
-%%% (rather than an unnumbered section). The use of this environment 
-%%% ensures the proper identification of the section in the article 
-%%% metadata as well as the consistent spelling of the heading.
-
-\begin{acks}
-If you wish to include any acknowledgments in your paper (e.g., to 
-people or funding agencies), please do so using the `\texttt{acks}' 
-environment. Note that the text of your acknowledgments will be omitted
-if you compile your document with the `\texttt{anonymous}' option.
-\end{acks}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%% The next two lines define, first, the bibliography style to be 
-%%% applied, and, second, the bibliography file to be used.
-
-\bibliographystyle{ACM-Reference-Format} 
-\bibliography{coalition}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\end{document}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-

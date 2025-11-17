@@ -1,3 +1,3 @@
 # Compile
 
-g++ integer\_partition.cpp rewards.cpp main\_parallel.cpp -o main
+g++ -w -std=c++17 -O3 -o main main\_parallel.cpp rewards.cpp integer\_partition.cpp
